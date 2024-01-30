@@ -93,13 +93,13 @@ package
                      try
                      {
                         // No access to browser - save user details to SharedObjects;
-                        sharedObject.data.userid = serverData.userid;
+                        sharedObject.data.email = serverData.email;
                         sharedObject.data.token = serverData.token;
                         sharedObject.flush();
                      }
                      catch (err:Error)
                      {
-                        GLOBAL.Message("Error saving SharedObject");
+                        GLOBAL.Message("You have set your permission to <b>denied</b> for accessing your local storage. Please enable it in the <b>Flash Player settings</b>");
                      }
                      LOGIN.Process(serverData);
                   }
@@ -183,7 +183,7 @@ package
 
       private static function handleUserLogin(serverData:Object):void
       {
-         if (!sharedObject.data.userid && authForm)
+         if (!sharedObject.data.email && authForm)
          {
             authForm.disposeUI();
          }
